@@ -5,9 +5,18 @@ def format_price(price):
         float_price = float(price)
     except ValueError:
         return ''
-    integer_part = round(float_price)
+    integer_part = int(round(float_price))
     fractional_part = float_price - integer_part
-    return ''.join([str(integer_part), format_fractional_part(fractional_part)])
+    return ''.join([format_integer_part(integer_part), format_fractional_part(fractional_part)])
+
+
+def format_integer_part(integer_part):
+    return insert_space_between_symbols(str(integer_part), 3)
+
+def insert_space_between_symbols(s, count_symbols):
+    if len(s) <= count_symbols:
+        return s
+    return ''.join([insert_space_between_symbols(s[:-count_symbols], count_symbols), ' ', s[-count_symbols:]])
 
 
 def format_fractional_part(fractional_part):
