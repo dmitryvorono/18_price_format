@@ -1,4 +1,3 @@
-# TODO place your tests here
 import unittest
 import format_price
 
