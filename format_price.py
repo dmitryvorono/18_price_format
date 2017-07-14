@@ -1,3 +1,6 @@
+import argparse
+
+
 def format_price(price):
     if not price:
         return ''
@@ -7,16 +10,20 @@ def format_price(price):
         return ''
     integer_part = int(round(float_price))
     fractional_part = float_price - integer_part
-    return ''.join([format_integer_part(integer_part), format_fractional_part(fractional_part)])
+    return ''.join([format_integer_part(integer_part),
+                    format_fractional_part(fractional_part)])
 
 
 def format_integer_part(integer_part):
-    return insert_space_between_symbols(str(integer_part), 3)
+    count_symbols = 3
+    return insert_space_between_symbols(str(integer_part), count_symbols)
 
-def insert_space_between_symbols(s, count_symbols):
-    if len(s) <= count_symbols:
-        return s
-    return ''.join([insert_space_between_symbols(s[:-count_symbols], count_symbols), ' ', s[-count_symbols:]])
+
+def insert_space_between_symbols(string, count_symbols):
+    if len(string) <= count_symbols:
+        return string
+    format_head_string = insert_space_between_symbols(string[:-count_symbols], count_symbols)
+    return ''.join([format_head_string, ' ', string[-count_symbols:]])
 
 
 def format_fractional_part(fractional_part):
@@ -27,5 +34,13 @@ def format_fractional_part(fractional_part):
     return str(rounded_fractional_part)[1:]
 
 
+def create_args_parser():
+    parser = argparse.ArgumentParser(description='This script format input price')
+    parser.add_argument('price', type=str, help='Price string')
+    return parser
+
+
 if __name__ == '__main__':
-    print(format_price('3245.000000'))
+    parser = create_args_parser()
+    args = parser.parse_args()
+    print(format_price(args.price))
