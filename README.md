@@ -11,7 +11,6 @@ The most frequent question when developing the website is printing on page goods
 
 1. Python 3.6 should be already installed
 2. Clone or download this repository
-3. Add permission on executive `format_price.py`
 4. For testing run:
  
 ```bash
@@ -23,10 +22,10 @@ $ python3.6 -m unittest tests.py
 The script have two interface:
 
 1. Programm - import module in your application and use function `format_price(price)`
-2. Command line interface (do not forgot add permissions on exec). For example, there was format string `2547.280000`:
+2. Command line interface. For example, there was format string `2547.280000`:
 
 ```bash
-./format_price.py 2547.2800000
+python3.6 format_price.py 2547.2800000
 ```
 
 The result is `2 547.28`
@@ -49,7 +48,6 @@ The code is written for educational purposes. Training course for web-developers
 
 1. Python3.6 должен быть установлен
 2. Склонировать или загрузить архивом данный репозиторий
-3. Выдать права на исполнение файлу `format_price.py`
 4. Для проверки работоспособности скрипта запустите тесты:
 
 ```bash
@@ -61,10 +59,10 @@ $ python3.6 -m unittest tests.py
 Программа имеет два интерфейса:
 
 1. Программный - импортируйте скрипт в ваше приложение и используйте функцию `format_price(price)` 
-2. Интерфейс командной строки (не забудьте выдать права на исполнение). В качестве примера ниже произведено форматирование строки `2547.280000`:
+2. Интерфейс командной строки. В качестве примера ниже произведено форматирование строки `2547.280000`:
 
 ```bash
-./format_price.py 2547.2800000
+python3.6 format_price.py 2547.2800000
 ```
 
 Полученный результат: `2 547.28`
