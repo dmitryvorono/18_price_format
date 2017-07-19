@@ -2,28 +2,34 @@ import argparse
 
 
 def format_price(price):
-    if not price:
+    if not is_correct_price(price):
         return ''
+    integer_part, fractional_part = price.split('.')
+    float_fractional_part = float(''.join(['0.', fractional_part])) 
+    return ''.join([format_integer_part(integer_part),
+                    format_fractional_part(float_fractional_part)])
+
+
+def is_correct_price(price):
     try:
         float_price = float(price)
-    except ValueError:
-        return ''
-    integer_part = int(round(float_price))
-    fractional_part = float_price - integer_part
-    return ''.join([format_integer_part(integer_part),
-                    format_fractional_part(fractional_part)])
+    except:
+        return False
+    return True
 
 
 def format_integer_part(integer_part):
     count_symbols = 3
-    return insert_space_between_symbols(str(integer_part), count_symbols)
+    reverse = integer_part[::-1]
+    divided_reverse = divide_string(reverse, count_symbols)
+    return ' '.join(divided_reverse)[::-1]
 
 
-def insert_space_between_symbols(string, count_symbols):
-    if len(string) <= count_symbols:
-        return string
-    format_head_string = insert_space_between_symbols(string[:-count_symbols], count_symbols)
-    return ''.join([format_head_string, ' ', string[-count_symbols:]])
+def divide_string(string, count_symbols):
+    divided_string = []
+    for i in range(0, len(string), count_symbols):
+        divided_string.append(string[i:i+count_symbols])
+    return divided_string
 
 
 def format_fractional_part(fractional_part):
