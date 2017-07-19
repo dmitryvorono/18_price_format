@@ -4,8 +4,10 @@ import argparse
 def format_price(price):
     if not is_correct_price(price):
         return ''
-    integer_part, fractional_part = price.split('.')
-    float_fractional_part = float(''.join(['0.', fractional_part])) 
+    parts = price.split('.')
+    integer_part = parts[0]
+    fractional_part = parts[1] if len(parts) > 1 else '0'
+    float_fractional_part = float(''.join(['0.', fractional_part]))
     return ''.join([format_integer_part(integer_part),
                     format_fractional_part(float_fractional_part)])
 
