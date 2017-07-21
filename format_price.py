@@ -14,8 +14,10 @@ def format_price(price):
 
 def is_correct_price(price):
     try:
-        float_price = float(price)
-    except:
+        float(price)
+    except TypeError:
+        return False
+    except ValueError:
         return False
     return True
 
