@@ -31,14 +31,15 @@ def format_integer_part(integer_part):
 
 def divide_string(string, count_symbols):
     divided_string = []
-    for i in range(0, len(string), count_symbols):
-        divided_string.append(string[i:i+count_symbols])
+    len_string = len(string)
+    for index in range(0, len_string, count_symbols):
+        divided_string.append(string[index:index+count_symbols])
     return divided_string
 
 
 def format_fractional_part(fractional_part):
-    round_coins = 2
-    rounded_fractional_part = round(fractional_part, round_coins)
+    ndigits = 2
+    rounded_fractional_part = round(fractional_part, ndigits)
     if not rounded_fractional_part:
         return ''
     return str(rounded_fractional_part)[1:]
