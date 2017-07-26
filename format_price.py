@@ -30,11 +30,8 @@ def format_integer_part(integer_part):
 
 
 def divide_string(string, count_symbols):
-    divided_string = []
-    len_string = len(string)
-    for index in range(0, len_string, count_symbols):
-        divided_string.append(string[index:index+count_symbols])
-    return divided_string
+    return [string[index:index+count_symbols]
+            for index in range(0, len(string), count_symbols)]
 
 
 def format_fractional_part(fractional_part):
